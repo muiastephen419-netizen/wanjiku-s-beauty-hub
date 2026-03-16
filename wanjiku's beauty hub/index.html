@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wanjiku's Beauty Hub — Home</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── PAGE-SPECIFIC: HOME ── */
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 94vh;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1800&q=85')
+                  center/cover no-repeat;
+      animation: heroZoom 14s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.0); }
+      to   { transform: scale(1.10); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        140deg,
+        rgba(255,79,163,0.75) 0%,
+        rgba(26,26,26,0.55) 55%,
+        rgba(201,168,76,0.5) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: var(--white);
+      padding: 2rem 1.5rem;
+      animation: fadeUp 1s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(36px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .hero-content .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      opacity: 0.88;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+    .hero-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1.08;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.22);
+      margin-bottom: 1.2rem;
+    }
+    .hero-content h2 em {
+      font-style: italic;
+      color: #fde9c4;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      opacity: 0.92;
+      max-width: 520px;
+      margin: 0 auto 2.2rem;
+      line-height: 1.8;
+    }
+    .hero-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.2rem; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.65);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-scroll span {
+      display: block;
+      width: 1px; height: 44px;
+      background: rgba(255,255,255,0.45);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%   { transform:scaleY(0); transform-origin:top; }
+      50%  { transform:scaleY(1); transform-origin:top; }
+      51%  { transform:scaleY(1); transform-origin:bottom; }
+      100% { transform:scaleY(0); transform-origin:bottom; }
+    }
+
+    /* WELCOME STRIP */
+    .welcome-strip {
+      background: var(--pink);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      padding: 1.5rem 2rem;
+      flex-wrap: wrap;
+    }
+    .welcome-strip .item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .welcome-strip .item .icon { font-size: 1.2rem; }
+
+    /* INTRO */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width:768px) { .intro-grid { grid-template-columns:1fr; gap:2rem; } }
+    .intro-img-wrap {
+      position: relative;
+    }
+    .intro-img-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: var(--shadow-md);
+    }
+    .intro-img-badge {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: var(--gold);
+      color: var(--white);
+      border-radius: 50%;
+      width: 110px; height: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+    }
+    .intro-img-badge strong { font-size: 1.6rem; line-height: 1; }
+    .intro-img-badge span  { font-size: 0.6rem; letter-spacing: 2px; text-transform:uppercase; opacity:0.9; }
+    .intro-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem,3.5vw,2.5rem);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .intro-text h2 em { color: var(--pink); font-style:italic; }
+    .intro-text p {
+      color: var(--mid);
+      line-height: 1.9;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .intro-text .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .intro-text .feature-tag {
+      background: var(--pink-light);
+      border: 1.5px solid var(--border);
+      color: var(--pink-dark);
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* QUICK SERVICES PREVIEW */
+    .quick-services {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width:768px) { .quick-services { grid-template-columns:1fr; } }
+    @media (min-width:769px) and (max-width:1024px) { .quick-services { grid-template-columns:repeat(2,1fr); } }
+    .qs-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-align: center;
+    }
+    .qs-card:hover { transform:translateY(-6px); box-shadow: var(--shadow-pink); }
+    .qs-card img { width:100%; height:180px; object-fit:cover; }
+    .qs-card-body { padding: 1.4rem 1.2rem 1.6rem; }
+    .qs-card-body .icon { font-size:1.8rem; margin-bottom:0.4rem; }
+    .qs-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+    .qs-card-body p { font-size:0.88rem; color:var(--gray); line-height:1.6; }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width:900px) { .testimonials-grid { grid-template-columns:1fr; } }
+    .testi-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 2rem 1.6rem;
+    }
+    .testi-stars { color: var(--gold); font-size:1rem; margin-bottom:0.8rem; }
+    .testi-card p { color:rgba(255,255,255,0.82); font-size:0.95rem; line-height:1.8; font-style:italic; margin-bottom:1.2rem; }
+    .testi-author { display:flex; align-items:center; gap:0.8rem; }
+    .testi-author .avatar {
+      width:42px; height:42px; border-radius:50%;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      display:flex; align-items:center; justify-content:center;
+      color:var(--white); font-weight:700; font-size:1rem;
+    }
+    .testi-author .name { color:var(--white); font-weight:700; font-size:0.9rem; }
+    .testi-author .loc  { color:rgba(255,255,255,0.5); font-size:0.78rem; }
+
+    /* CTA BAND */
+    .cta-band {
+      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 50%, #c0306b 100%);
+      padding: 4.5rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content:'';
+      position:absolute; inset:0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 60%);
+    }
+    .cta-band h2 {
+      font-family:'Playfair Display',serif;
+      font-size: clamp(1.8rem,4vw,3rem);
+      color:var(--white);
+      margin-bottom:0.8rem;
+      position:relative;
+    }
+    .cta-band p { color:rgba(255,255,255,0.88); font-size:1.05rem; margin-bottom:2rem; position:relative; }
+    .cta-band .btn-group { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <h1>Wanjiku's Beauty Hub</h1>
+    <p>Beauty that turns heads</p>
+  </header>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">✦ Nairobi's Premier Beauty Destination ✦</p>
+      <h2>Look Good.<br/><em>Feel Unstoppable.</em></h2>
+      <p>Expert hair, nails, and skincare treatments crafted just for you — because you deserve nothing less than extraordinary.</p>
+      <div class="hero-btns">
+        <a href="services.html" class="btn btn-gold">Explore Services</a>
+        <a href="contact.html" class="btn btn-outline-white">Book Appointment</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span></span>
+      Scroll
+    </div>
+  </section>
+
+  <!-- WELCOME STRIP -->
+  <div class="welcome-strip">
+    <div class="item"><span class="icon">💅</span> Expert Stylists</div>
+    <div class="item"><span class="icon">✨</span> Premium Products</div>
+    <div class="item"><span class="icon">🌸</span> Relaxing Atmosphere</div>
+    <div class="item"><span class="icon">💛</span> 500+ Happy Clients</div>
+  </div>
+
+  <!-- INTRO SECTION -->
+  <section class="section-wrap section-wrap--white">
+    <div class="max-w">
+      <div class="intro-grid">
+        <div class="intro-img-wrap">
+          <img src="https://images.unsplash.com/photo-1633681122418-0e2b58b3b7f5?w=900&q=80" alt="Salon interior"/>
+          <div class="intro-img-badge">
+            <strong>5★</strong>
+            <span>Rated</span>
+          </div>
+        </div>
+        <div class="intro-text">
+          <div class="section-title" style="text-align:left; margin-bottom:1.5rem;">
+            <span class="eyebrow">Welcome</span>
+            <h2>Where Every Visit Feels Like a <em>Luxury</em></h2>
+          </div>
+          <p>At Wanjiku's Beauty Hub, we believe every woman deserves to feel like her most radiant self. Our team of expert stylists and beauty therapists combine the latest trends with timeless techniques.</p>
+          <p>Whether it's a bold new haircut, show-stopping nails, or a glowing facial — we pour passion into every single appointment.</p>
+          <div class="features">
+            <span class="feature-tag">💇‍♀️ Hair Styling</span>
+            <span class="feature-tag">💅 Nail Art</span>
+            <span class="feature-tag">✨ Facials</span>
+            <span class="feature-tag">💄 Makeup</span>
+            <span class="feature-tag">🎀 Braids</span>
+          </div>
+          <a href="about.html" class="btn btn-pink">Discover Our Story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK SERVICES PREVIEW -->
+  <section class="section-wrap section-wrap--tint">
+    <div class="max-w">
+      <div class="section-title">
+        <span class="eyebrow">What We Offer</span>
+        <h2>Our Most Loved Services</h2>
+        <div class="divider"><span></span><i>✦</i><span></span></div>
+      </div>
+      <div class="quick-services">
+        <div class="qs-card">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Hair"/>
+          <div class="qs-card-body">
+            <div class="icon">💇‍♀️</div>
+            <h3>Hair Styling</h3>
+            <p>Cuts, colour, treatments and blowouts for every hair type.</p>
+          </div>
+        </div>
+        <div class="qs-card">
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80" alt="Nails"/>
+          <div class="qs-card-body">
+            <div class="icon">💅</div>
+            <h3>Nail Art</h3>
+            <p>Gel, acrylic, ombre and intricate nail art designs.</p>
+          </div>
+        </div>
+        <div class="qs-card">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Facial"/>
+          <div class="qs-card-body">
+            <div class="icon">✨</div>
+            <h3>Facials & Glow</h3>
+            <p>Rejuvenating facials tailored to your unique skin needs.</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:3rem;">
+        <a href="services.html" class="btn btn-pink">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section-wrap section-wrap--dark">
+    <div class="max-w">
+      <div class="section-title">
+        <span class="eyebrow">Happy Clients</span>
+        <h2>What People Are Saying</h2>
+        <div class="divider"><span></span><i>✦</i><span></span></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Absolutely love Wanjiku's! My nails have never looked better. The nail artist is incredibly talented and the atmosphere is so relaxing."</p>
+          <div class="testi-author">
+            <div class="avatar">A</div>
+            <div><div class="name">Amina K.</div><div class="loc">Westlands, Nairobi</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"I came in for a facial and left feeling like a brand new woman. The products they use are top quality. Will definitely be back every month!"</p>
+          <div class="testi-author">
+            <div class="avatar">N</div>
+            <div><div class="name">Njeri M.</div><div class="loc">Karen, Nairobi</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Best braiding salon in Nairobi, no debate. My knotless braids lasted so long and still looked fresh. The ladies here are true professionals."</p>
+          <div class="testi-author">
+            <div class="avatar">F</div>
+            <div><div class="name">Fatuma O.</div><div class="loc">Kileleshwa, Nairobi</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <h2>Ready for Your Glow-Up?</h2>
+    <p>Book your appointment today — spots fill up fast!</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn btn-gold">Book Now</a>
+      <a href="gallery.html" class="btn btn-outline-white">See Our Work</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-brand">Wanjiku's Beauty Hub</div>
+    <div class="footer-tagline">Beauty that turns heads</div>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-copy">&copy; 2026 Wanjiku's Beauty Hub · Nairobi, Kenya · All rights reserved</div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/254700000000" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.164 0 0 7.163 0 16c0 2.822.737 5.469 2.027 7.77L0 32l8.468-2.004A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 01-6.781-1.857l-.487-.289-5.027 1.189 1.21-4.905-.32-.506A13.248 13.248 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.888c-.397-.198-2.347-1.157-2.71-1.289-.364-.133-.628-.198-.893.199-.264.397-1.023 1.289-1.254 1.554-.23.264-.462.298-.859.1-.397-.198-1.676-.617-3.192-1.968-1.18-1.052-1.976-2.35-2.208-2.748-.23-.397-.024-.612.173-.81.178-.177.397-.462.595-.693.199-.23.265-.397.397-.661.133-.265.067-.496-.033-.694-.1-.199-.893-2.152-1.224-2.946-.322-.772-.649-.668-.893-.68l-.759-.013c-.264 0-.694.1-.1058.496-.364.397-1.39 1.357-1.39 3.31s1.423 3.84 1.621 4.104c.198.264 2.8 4.274 6.785 5.992.948.41 1.688.654 2.264.837.951.303 1.817.26 2.5.158.763-.114 2.347-.958 2.678-1.884.33-.927.33-1.721.23-1.884-.1-.165-.364-.265-.76-.463z"/></svg>
+  </a>
+
+</body>
+</html>
